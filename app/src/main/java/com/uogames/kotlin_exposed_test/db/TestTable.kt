@@ -31,10 +31,8 @@ object TestTable : UUIDTable() {
 	}
 }
 
-fun initDB(context: Context) {
-
-	val fullURL = "${context.filesDir.absolutePath}/database.db"
-	Database.connect("jdbc:sqlite:${fullURL}")
+fun initDB(dbPath: String) {
+	Database.connect("jdbc:sqlite:${dbPath}")
 	transaction {
 		SchemaUtils.create(TestTable)
 	}

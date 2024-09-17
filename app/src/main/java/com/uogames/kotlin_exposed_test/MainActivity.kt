@@ -37,7 +37,7 @@ import com.uogames.kotlin_exposed_test.ui.theme.KotlinexposedtestTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initDB(this)
+        initDB("${filesDir.absolutePath}/database.db")
         setContent {
             KotlinexposedtestTheme {
                 // A surface container using the 'background' color from the theme
@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    Greeting()
                 }
             }
         }
@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting() {
 
     var text by remember { mutableStateOf("") }
     var data by remember { mutableStateOf<List<TestTable.Test>>(emptyList()) }
