@@ -37,7 +37,8 @@ import com.uogames.kotlin_exposed_test.ui.theme.KotlinexposedtestTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initDB("${filesDir.absolutePath}/database.db")
+        initDB(getDatabasePath("database.db").absolutePath)
+        //initDB("${filesDir.absolutePath}/database.db")
         setContent {
             KotlinexposedtestTheme {
                 // A surface container using the 'background' color from the theme
