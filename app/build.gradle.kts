@@ -1,16 +1,17 @@
 plugins {
 	alias(libs.plugins.androidApplication)
 	alias(libs.plugins.jetbrainsKotlinAndroid)
+	alias(libs.plugins.compose.compiler)
 }
 
 android {
 	namespace = "com.uogames.kotlin_exposed_test"
-	compileSdk = 34
+	compileSdk = 35
 
 	defaultConfig {
 		applicationId = "com.uogames.kotlin_exposed_test"
 		minSdk = 26
-		targetSdk = 34
+		targetSdk = 35
 		versionCode = 1
 		versionName = "1.0"
 
@@ -36,9 +37,7 @@ android {
 	buildFeatures {
 		compose = true
 	}
-	composeOptions {
-		kotlinCompilerExtensionVersion = "1.5.1"
-	}
+
 	packaging {
 		resources {
 			excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -66,17 +65,10 @@ dependencies {
 	implementation(libs.androidx.ui.tooling.preview)
 	implementation(libs.androidx.material3)
 
-	implementation("org.xerial:sqlite-jdbc:3.45.3.0")
-	val exposedVersion = "0.49.0"
-	implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
-	implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
-	implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
-
-	implementation("androidx.sqlite:sqlite:2.4.0")
-
-
-
-
+	implementation(libs.sqlite.jdbc)
+	implementation(libs.exposed.core)
+	implementation(libs.exposed.dao)
+	implementation(libs.exposed.jdbc)
 
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.junit)
